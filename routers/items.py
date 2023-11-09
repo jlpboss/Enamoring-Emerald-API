@@ -6,7 +6,7 @@ import crud
 from database import SessionLocal
 
 router = APIRouter(
-    prefix="/heroes"
+    prefix="/menu-items"
 )
 
 def get_db():
@@ -16,7 +16,7 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/all", response_model=List[schemas.HeroModel])
-def get_heroes(db: Session = Depends(get_db)):
-    heroes = crud.get_heroes(db)
-    return heroes
+@router.get("/all", response_model=List[schemas.Menu_Item_Schema])
+def get_items(db: Session = Depends(get_db)):
+    items = crud.get_menu_items(db)
+    return items

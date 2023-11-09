@@ -2,48 +2,35 @@ from typing import Optional
 
 from pydantic import BaseModel, EmailStr
 
-class AbilityTypeModel(BaseModel):
+class Category_Schema(BaseModel):
     id: int
-    name: str | None
+    name: int
 
-class AbilityModel(BaseModel):
+class Category_Menu_Schema(BaseModel):
     id: int
-    hero_id: int
-    ability_type_id: int
-    ability_type: AbilityTypeModel
+    category_id: int
+    menu_item_id: int
 
-class RelationshipTypeModel(BaseModel):
+class Cuisine_Schema(BaseModel):
     id: int
-    name: str | None
+    name: str
 
-class RelationshipModel(BaseModel):
+class Cuisine_Menu_Schema(BaseModel):
     id: int
-    hero1_id: int
-    hero2_id: int
-    relationship_type_id: int
-    relationship_type: RelationshipTypeModel 
+    cuisine_id: int
+    menu_item_id: int
 
-class HeroModel(BaseModel):
+class Menu_Item_Schema(BaseModel):
     id: int
-    name: str | None
-    about_me: str | None
-    biography: str | None
-    image_url: str | None
-    abilities: list[AbilityModel]
-    enemies: list[RelationshipModel]
-    friends: list[RelationshipModel]
+    title: str | None
+    cuisine_type: str | None
+    category: str | None
+    description: str | None
+    price: float
+    spicy_level: int
 
     def __init__(self, **data):
         super().__init__(**data)
-        self.abilities = self.abilities or []
-        self.enemies = self.enemies or []
-        self.friends = self.friends or []
 
     class Config:
         from_attributes = True
-
-# class ResponseModel(BaseModel):
-
-#     hero: HeroModel
-#     ability: AbilityModel
-#     ability_type: AbilityTypeModel

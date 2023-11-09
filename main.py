@@ -1,16 +1,14 @@
 from fastapi import FastAPI
-from models import Hero, Ability, AbilityType, Relationship, RelationshipType
 from database import engine
 from sqlalchemy import select
-from schemas import HeroModel, AbilityModel, AbilityTypeModel, RelationshipModel, RelationshipTypeModel
 from fastapi.responses import PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import heroes
+from routers import items
 
 app = FastAPI()
-app.include_router(heroes.router)
+app.include_router(items.router)
 
 origins = [
     "http://8000-coachhallso-fastapidock-5fztzl33j5c.ws-us106.gitpod.io",
