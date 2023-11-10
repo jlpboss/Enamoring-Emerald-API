@@ -30,7 +30,7 @@ class Cuisine_Menu(Base):
     __tablename__ = "cuisine_menu"
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     cuisine_id: Mapped[int] = mapped_column(ForeignKey("cuisine.id"))
-    menu_item_id: Mapped[int] = mapped_column(ForeignKey("cuisine_menu.id"))
+    menu_items_id: Mapped[int] = mapped_column(ForeignKey("menu_items.id"))
 
     menu_item: Mapped["Menu_Item"] = relationship(back_populates="cuisine_menu")
     cuisine: Mapped["Cuisine"] = relationship(back_populates="cuisine_menu")
@@ -46,7 +46,7 @@ class Category_Menu(Base):
     __tablename__ = "category_menu"
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
-    menu_item_id: Mapped[int] = mapped_column(ForeignKey("category_menu.id"))
+    menu_items_id: Mapped[int] = mapped_column(ForeignKey("menu_items.id"))
 
     menu_item: Mapped["Menu_Item"] = relationship(back_populates="category_menu")
     category: Mapped["Category"] = relationship(back_populates="category_menu")
