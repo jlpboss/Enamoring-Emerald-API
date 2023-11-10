@@ -10,6 +10,7 @@ class Category_Menu_Schema(BaseModel):
     id: int
     category_id: int
     menu_items_id: int
+    category: Category_Schema
 
 class Cuisine_Schema(BaseModel):
     id: int
@@ -19,6 +20,7 @@ class Cuisine_Menu_Schema(BaseModel):
     id: int
     cuisine_id: int
     menu_items_id: int
+    cuisine: Cuisine_Schema
 
 class Menu_Item_Schema(BaseModel):
     id: int
