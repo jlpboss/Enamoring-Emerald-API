@@ -15,6 +15,7 @@ class Menu_Item(Base):
     description: Mapped[str] = Column(String)
     price: Mapped[float] = Column(Numeric(precision=12, scale=2, asdecimal=False))
     spicy_level: Mapped[int] = Column(Integer)
+    has_nuts: Mapped[bool] = Column(Boolean)
 
     cuisine_menu: Mapped["Cuisine_Menu"] = relationship(back_populates="menu_item", cascade="all, delete-orphan")
     category_menu: Mapped["Category_Menu"] = relationship(back_populates="menu_item", cascade="all, delete-orphan")
